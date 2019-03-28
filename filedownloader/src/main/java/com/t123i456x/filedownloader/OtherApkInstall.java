@@ -8,8 +8,9 @@ import android.util.Log;
 import android.widget.Toast;
 import java.io.File;
 
-public class DeleteFiles extends BroadcastReceiver {
+public class OtherApkInstall extends BroadcastReceiver {
 
+    //监听其他应用更新，安装，卸载
     private String path = Environment.getExternalStorageDirectory().toString() + "/filedownloader";
 
     @Override
@@ -19,25 +20,17 @@ public class DeleteFiles extends BroadcastReceiver {
             String packageName = intent.getDataString();
             Log.e("Test", "---------------" + "PACKAGE_REMOVED" + packageName);
             Toast.makeText(context, "完成卸载"+packageName, Toast.LENGTH_LONG).show();
-            deleteDir(path);
         }
         if (intent.getAction().equals("android.intent.action.PACKAGE_ADDED")) {
             String packageName = intent.getDataString();
             Log.e("Test", "---------------" + "PACKAGE_ADDED" + packageName);
             Toast.makeText(context, "完成安装"+packageName, Toast.LENGTH_LONG).show();
-            File file = new File(path);
-            if (!file.exists()) {
-                file.mkdirs();
-            }
         }
         if (intent.getAction().equals("android.intent.action.PACKAGE_REPLACED")) {
             String packageName = intent.getDataString();
             Log.e("Test", "---------------" + "PACKAGE_REPLACED" + packageName);
             Toast.makeText(context, "完成更新"+packageName, Toast.LENGTH_LONG).show();
             File file = new File(path);
-            if (!file.exists()) {
-                file.mkdirs();
-            }
         }
     }
 

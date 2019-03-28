@@ -35,7 +35,7 @@
         </provider>
 
         <receiver
-            android:name=".DeleteFiles"
+            android:name=".OtherApkInstall"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
