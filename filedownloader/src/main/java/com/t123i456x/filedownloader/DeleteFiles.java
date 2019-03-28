@@ -10,7 +10,7 @@ import java.io.File;
 
 public class DeleteFiles extends BroadcastReceiver {
 
-    private String path = Environment.getExternalStorageDirectory().toString() + "/file";
+    private String path = Environment.getExternalStorageDirectory().toString() + "/filedownloader";
 
     @Override
     public void onReceive(Context context, Intent intent) {
