@@ -257,7 +257,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void versionCode() {
         try {
-            Gson gson = new Gson();
             JSONArray array = new JSONArray(VersionInfo);
             JSONObject obj = array.getJSONObject(0);
             JSONObject apkInfo = obj.getJSONObject("apkInfo");

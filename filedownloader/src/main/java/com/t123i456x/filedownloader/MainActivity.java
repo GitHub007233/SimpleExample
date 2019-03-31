@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -134,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 File file = new File(path);
                 if(file.exists()){
                     try{
+                        Toast.makeText(MainActivity.this,"APK文件包名为："+getPackageName(path),Toast.LENGTH_SHORT).show();
                         startInstall(MainActivity.this,path);
                     }catch (Exception e) {
                     e.printStackTrace();
@@ -303,6 +307,17 @@ public class MainActivity extends AppCompatActivity {
                 deleteDirWihtFile(file); // 递规的方式删除文件夹
         }
         dir.delete();// 删除目录本身
+    }
+
+    public String getPackageName(String path) {
+        PackageManager packageManager = getPackageManager();
+        PackageInfo info = packageManager.getPackageArchiveInfo(path, PackageManager.GET_ACTIVITIES);
+        String packageName = "";
+        if (info != null) {
+            ApplicationInfo appInfo = info.applicationInfo;
+            packageName = appInfo.packageName;
+        }
+        return packageName;
     }
 
 }
