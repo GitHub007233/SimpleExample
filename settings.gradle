@@ -1,1 +1,1 @@
-include ':app', ':filedownloader', ':installapk'
+include ':app', ':filedownloader', ':installapk', ':json'

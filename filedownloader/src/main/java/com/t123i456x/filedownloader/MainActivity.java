@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!file.exists()){
                     downLoad("http://192.168.199.143:8080/app/qb.jpg", "qb.jpg");
                 }else{
-                    Toast.makeText(MainActivity.this,"文件已存在",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"图片文件已存在",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 if(file.exists()){
                     loadImage();
                 }else{
-                    Toast.makeText(MainActivity.this,"文件不存在",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"图片文件不存在",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!file.exists()){
                     downLoad("http://192.168.199.143:8080/app/output.json", "output.json");
                 }else{
-                    Toast.makeText(MainActivity.this,"文件已存在",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"文本文件已存在",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -102,12 +102,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                String path = Environment.getExternalStorageDirectory().toString() + "/filedownloader/qb.jpg";
+                String path = Environment.getExternalStorageDirectory().toString() + "/filedownloader/output.json";
                 File file = new File(path);
                 if(file.exists()){
                     loadText();
                 }else{
-                    Toast.makeText(MainActivity.this,"文件不存在",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"文本文件不存在",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!file.exists()){
                     downLoad("http://192.168.199.143:8080/app/app-release.apk", "app-release.apk");
                 }else{
-                    Toast.makeText(MainActivity.this,"文件已存在",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"APK文件已存在",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                     }
                 }else{
-                    Toast.makeText(MainActivity.this,"文件不存在",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"APK文件不存在",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!file.exists()){
                     downLoad("http://192.168.199.143:8080/app/倾杯.mp4", "倾杯.mp4");
                 }else{
-                    Toast.makeText(MainActivity.this,"文件已存在",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"视频文件已存在",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -164,6 +164,13 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"未实现功能！",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        String path = Environment.getExternalStorageDirectory().toString() + "/filedownloader";
+        deleteDir(path);
+        super.onDestroy();
     }
 
     public static void downLoad(final String path, final String FileName) {
@@ -279,6 +286,23 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         String path = Environment.getExternalStorageDirectory().toString() + "/filedownloader/app-release.apk";
         startInstall(MainActivity.this,path);
+    }
+
+    public static void deleteDir(final String pPath) {
+        File dir = new File(pPath);
+        deleteDirWihtFile(dir);
+    }
+
+    public static void deleteDirWihtFile(File dir) {
+        if (dir == null || !dir.exists() || !dir.isDirectory())
+            return;
+        for (File file : dir.listFiles()) {
+            if (file.isFile())
+                file.delete(); // 删除所有文件
+            else if (file.isDirectory())
+                deleteDirWihtFile(file); // 递规的方式删除文件夹
+        }
+        dir.delete();// 删除目录本身
     }
 
 }

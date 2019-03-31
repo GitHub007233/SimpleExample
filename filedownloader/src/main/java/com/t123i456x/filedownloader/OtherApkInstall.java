@@ -3,15 +3,12 @@ package com.t123i456x.filedownloader;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
-import java.io.File;
 
 public class OtherApkInstall extends BroadcastReceiver {
 
     //监听其他应用更新，安装，卸载
-    private String path = Environment.getExternalStorageDirectory().toString() + "/filedownloader";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -30,25 +27,7 @@ public class OtherApkInstall extends BroadcastReceiver {
             String packageName = intent.getDataString();
             Log.e("Test", "---------------" + "PACKAGE_REPLACED" + packageName);
             Toast.makeText(context, "完成更新"+packageName, Toast.LENGTH_LONG).show();
-            File file = new File(path);
         }
-    }
-
-    public static void deleteDir(final String pPath) {
-        File dir = new File(pPath);
-        deleteDirWihtFile(dir);
-    }
-
-    public static void deleteDirWihtFile(File dir) {
-        if (dir == null || !dir.exists() || !dir.isDirectory())
-            return;
-        for (File file : dir.listFiles()) {
-            if (file.isFile())
-                file.delete(); // 删除所有文件
-            else if (file.isDirectory())
-                deleteDirWihtFile(file); // 递规的方式删除文件夹
-        }
-        dir.delete();// 删除目录本身
     }
 
 }

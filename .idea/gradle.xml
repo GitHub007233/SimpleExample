@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/filedownloader" />
             <option value="$PROJECT_DIR$/installapk" />
+            <option value="$PROJECT_DIR$/json" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
