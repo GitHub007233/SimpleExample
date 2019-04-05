@@ -33,6 +33,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static int UNKNOWN_CODE = 2018;
     private Button bn0;
     private Button bn1;
     private ImageView iv0;
@@ -44,6 +45,59 @@ public class MainActivity extends AppCompatActivity {
     private Button bn6;
     private Button bn7;
     private String version_info;
+    private Activity mAct = this;
+
+    public static void downLoad(final String path, final String FileName) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL(path);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    con.setReadTimeout(5000);
+                    con.setConnectTimeout(5000);
+                    con.setRequestProperty("Charset", "UTF-8");
+                    con.setRequestMethod("GET");
+                    if (con.getResponseCode() == 200) {
+                        InputStream is = con.getInputStream();//获取输入流
+                        FileOutputStream fileOutputStream = null;//文件输出流
+                        if (is != null) {
+                            FileUtils fileUtils = new FileUtils();
+                            fileOutputStream = new FileOutputStream(fileUtils.createFile(FileName));//指定文件保存路径，代码看下一步
+                            byte[] buf = new byte[1024];
+                            int ch;
+                            while ((ch = is.read(buf)) != -1) {
+                                fileOutputStream.write(buf, 0, ch);//将获取到的流写入文件中
+                            }
+                        }
+                        if (fileOutputStream != null) {
+                            fileOutputStream.flush();
+                            fileOutputStream.close();
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    public static void deleteDir(final String pPath) {
+        File dir = new File(pPath);
+        deleteDirWihtFile(dir);
+    }
+
+    public static void deleteDirWihtFile(File dir) {
+        if (dir == null || !dir.exists() || !dir.isDirectory())
+            return;
+        for (File file : dir.listFiles()) {
+            if (file.isFile())
+                file.delete(); // 删除所有文件
+            else if (file.isDirectory())
+                deleteDirWihtFile(file); // 递规的方式删除文件夹
+        }
+        dir.delete();// 删除目录本身
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,41 +231,6 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public static void downLoad(final String path, final String FileName) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL(path);
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    con.setReadTimeout(5000);
-                    con.setConnectTimeout(5000);
-                    con.setRequestProperty("Charset", "UTF-8");
-                    con.setRequestMethod("GET");
-                    if (con.getResponseCode() == 200) {
-                        InputStream is = con.getInputStream();//获取输入流
-                        FileOutputStream fileOutputStream = null;//文件输出流
-                        if (is != null) {
-                            FileUtils fileUtils = new FileUtils();
-                            fileOutputStream = new FileOutputStream(fileUtils.createFile(FileName));//指定文件保存路径，代码看下一步
-                            byte[] buf = new byte[1024];
-                            int ch;
-                            while ((ch = is.read(buf)) != -1) {
-                                fileOutputStream.write(buf, 0, ch);//将获取到的流写入文件中
-                            }
-                        }
-                        if (fileOutputStream != null) {
-                            fileOutputStream.flush();
-                            fileOutputStream.close();
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }
-
     private void loadImage() {
         String path = Environment.getExternalStorageDirectory().toString() + "/filedownloader";
         try {
@@ -237,9 +256,6 @@ public class MainActivity extends AppCompatActivity {
         tv0.setText(readStr);
         version_info = readStr;
     }
-
-    private Activity mAct = this;
-    public static int UNKNOWN_CODE = 2018;
 
     public void startInstall(Context context, String path) {
 
@@ -290,23 +306,6 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         String path = Environment.getExternalStorageDirectory().toString() + "/filedownloader/app-release.apk";
         startInstall(MainActivity.this,path);
-    }
-
-    public static void deleteDir(final String pPath) {
-        File dir = new File(pPath);
-        deleteDirWihtFile(dir);
-    }
-
-    public static void deleteDirWihtFile(File dir) {
-        if (dir == null || !dir.exists() || !dir.isDirectory())
-            return;
-        for (File file : dir.listFiles()) {
-            if (file.isFile())
-                file.delete(); // 删除所有文件
-            else if (file.isDirectory())
-                deleteDirWihtFile(file); // 递规的方式删除文件夹
-        }
-        dir.delete();// 删除目录本身
     }
 
     public String getPackageName(String path) {

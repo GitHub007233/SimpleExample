@@ -1,7 +1,7 @@
-package com.t123i456x.checkupdate;
+package com.t123i456x.stylechange;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
