@@ -10,11 +10,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/checkupdate" />
+            <option value="$PROJECT_DIR$/design" />
             <option value="$PROJECT_DIR$/filedownloader" />
             <option value="$PROJECT_DIR$/installapk" />
             <option value="$PROJECT_DIR$/json" />
             <option value="$PROJECT_DIR$/showdialog" />
-            <option value="$PROJECT_DIR$/stylechange" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

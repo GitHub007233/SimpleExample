@@ -1,1 +1,1 @@
-include ':app', ':filedownloader', ':installapk', ':json', ':checkupdate', ':stylechange', ':showdialog'
+include ':app', ':filedownloader', ':installapk', ':json', ':checkupdate', ':design', ':showdialog'

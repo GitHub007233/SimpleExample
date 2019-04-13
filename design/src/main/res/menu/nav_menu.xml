@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="基础设置">
+        <menu>
+            <group android:checkableBehavior="single"
+                android:id="@+id/group1">
+                <item
+                    android:id="@+id/nav_intro"
+                    android:icon="@drawable/settings_black"
+                    android:title="相关简介" />
+                <item
+                    android:id="@+id/nav_feedback"
+                    android:icon="@drawable/settings_black"
+                    android:title="问题反馈" />
+                <item
+                    android:id="@+id/nav_zt"
+                    android:icon="@drawable/settings_black"
+                    android:title="切换主题" />
+                <item
+                    android:id="@+id/nav_settings"
+                    android:icon="@drawable/settings_black"
+                    android:title="全部设置"/>
+                <item
+                    android:id="@+id/nav_update"
+                    android:icon="@drawable/settings_black"
+                    android:title="检查更新" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="完全退出">
+        <menu>
+            <group android:checkableBehavior="single"
+                android:id="@+id/group2">
+                <item
+                    android:id="@+id/nav_timing"
+                    android:icon="@drawable/settings_black"
+                    android:title="定时关闭" />
+                <item
+                    android:id="@+id/nav_exit"
+                    android:icon="@drawable/settings_black"
+                    android:title="关闭应用" />
+            </group>
+        </menu>
+    </item>
+
+</menu>

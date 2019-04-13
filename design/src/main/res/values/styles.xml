@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<resources>
+
+    <style parent="Theme.AppCompat.Light.NoActionBar" name="AppTheme">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="TranslucentTheme" parent="AppTheme">
+    </style>
+
+    <style parent="Theme.AppCompat.Light.NoActionBar" name="black">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/black</item>
+    <item name="colorPrimaryDark">@color/black</item>
+    <item name="colorAccent">@color/black</item>
+    </style>
+
+</resources>

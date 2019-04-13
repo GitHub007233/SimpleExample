@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="214dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="31dp"
+        android:layout_marginRight="31dp"
+        app:cardCornerRadius="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/lineardb"
+                android:layout_alignParentStart="true"
+                app:srcCompat="@drawable/rv1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_above="@+id/lineardb"
+                android:background="#e6e6e6" />
+
+            <LinearLayout
+                android:id="@+id/lineardb"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="0dp">
+
+                <TextView
+                    android:id="@+id/textwzdl"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_dialog"
+                    android:gravity="center"
+                    android:text="我知道了"
+                    android:textColor="#262626"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/textckxq"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_dialog"
+                    android:gravity="center"
+                    android:text="查看详情"
+                    android:textColor="#262626"
+                    android:textSize="16dp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
