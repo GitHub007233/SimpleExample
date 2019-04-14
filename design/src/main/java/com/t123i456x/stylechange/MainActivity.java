@@ -1,9 +1,7 @@
 package com.t123i456x.stylechange;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -171,13 +169,8 @@ public class MainActivity extends AppCompatActivity {
                 dialogImageView();
                 break;
             case R.id.bn4:
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
                     Intent intent = new Intent(MainActivity.this,SecondActivity.class);
                     startActivity(intent);
-                }else {
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                    startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
-                }
                 break;
             case R.id.tv1:
 //                ToastUtils.showToast(MainActivity.this,"Hello,World!");
@@ -221,7 +214,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mHeadPopupclly.dismiss();
-                Toast.makeText(MainActivity.this, "查看详情", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this,Video.class);
+                startActivity(intent);
             }
         });
     }

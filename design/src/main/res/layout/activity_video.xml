@@ -7,55 +7,298 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/toolbar" />
-
     <LinearLayout
+        android:id="@+id/ln0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/corners_bg"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editText"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp"
-            android:background="@color/tm"
-            android:maxLines="1"
-            android:text="请输入视频地址！"
-            android:textColor="@color/black" />
-
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/toolbar" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ln1"
+        android:layout_width="333.3dp"
+        android:layout_height="187.5dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/tm"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            app:cardBackgroundColor="@color/tm"
-            app:cardCornerRadius="20dp">
+            android:layout_height="60dp"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="TextView"
-                android:textSize="24sp" />
-        </android.support.v7.widget.CardView>
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/corners_bg"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/tm"
+                    android:hint="请输入视频地址！"
+                    android:maxLines="1"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/bn0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/selector_bn"
+                    android:onClick="onClick"
+                    android:text="播放视频" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:text="红色" />
+
+                        <LinearLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="50dp"
+                                android:layout_height="30dp"
+                                android:gravity="center"
+                                android:text="当前值" />
+
+                            <TextView
+                                android:id="@+id/tv1"
+                                android:layout_width="50dp"
+                                android:layout_height="20dp"
+                                android:gravity="center"
+                                android:text="00" />
+                        </LinearLayout>
+
+                        <SeekBar
+                            android:id="@+id/sb1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:max="255" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/view4"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:text="绿色" />
+
+                        <LinearLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="50dp"
+                                android:layout_height="30dp"
+                                android:gravity="center"
+                                android:text="当前值" />
+
+                            <TextView
+                                android:id="@+id/tv2"
+                                android:layout_width="50dp"
+                                android:layout_height="20dp"
+                                android:gravity="center"
+                                android:text="00" />
+
+                        </LinearLayout>
+
+                        <SeekBar
+                            android:id="@+id/sb2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:max="255" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/view5"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:text="蓝色" />
+
+                        <LinearLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="50dp"
+                                android:layout_height="30dp"
+                                android:gravity="center"
+                                android:text="当前值" />
+
+                            <TextView
+                                android:id="@+id/tv3"
+                                android:layout_width="50dp"
+                                android:layout_height="20dp"
+                                android:gravity="center"
+                                android:text="00" />
+
+                        </LinearLayout>
+
+                        <SeekBar
+                            android:id="@+id/sb3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:max="255" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/view6"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="透明度" />
+
+                        <LinearLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="50dp"
+                                android:layout_height="30dp"
+                                android:gravity="center"
+                                android:text="当前值" />
+
+                            <TextView
+                                android:id="@+id/tv4"
+                                android:layout_width="50dp"
+                                android:layout_height="20dp"
+                                android:gravity="center"
+                                android:text="00" />
+                        </LinearLayout>
+
+                        <SeekBar
+                            android:id="@+id/sb4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:max="255" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/view7"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp" />
+
+                    <Button
+                        android:id="@+id/bn2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:onClick="onClick"
+                        android:background="@drawable/selector_bn"
+                        android:text="预览过滤色" />
+
+                    <Button
+                        android:id="@+id/bn1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:onClick="onClick"
+                        android:background="@drawable/selector_bn"
+                        android:text="设置过滤色" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
     </LinearLayout>
 
 </LinearLayout>
