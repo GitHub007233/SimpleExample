@@ -21,20 +21,21 @@
             android:background="@drawable/toolbar" />
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/ln1"
         android:layout_width="333.3dp"
         android:layout_height="187.5dp"
         android:layout_gravity="center"
         android:orientation="vertical">
 
-        <VideoView
-            android:id="@+id/videoView"
+
+        <include
+            android:id="@+id/video"
+            layout="@layout/controlplay"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/tm"
-            android:visibility="visible" />
-    </LinearLayout>
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/ln2"
